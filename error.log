@@ -1,0 +1,53 @@
+00:08:31,683 INFO  [org.jboss.as.repository] (DeploymentScanner-threads - 1) WFLYDR0001: Content added at location C:\Camunda\camunda-7.13.0-wildfly-19.0.0-H2\server\wildfly-19.0.0.Final\standalone\data\content\d4\74faa9b73ba3da2ffe930082344505a5a481f5\content
+00:08:31,688 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) WFLYSRV0027: Starting deployment of "spin.war" (runtime-name: "spin.war")
+00:08:32,233 INFO  [org.camunda.bpm.container.impl.jboss.deployment.processor.ProcessApplicationProcessor] (MSC service thread 1-7) Detected user-provided @ProcessApplication component with name 'com.alexkozyura.test.spin.CamundaBpmProcessApplication'.
+00:08:32,449 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 37) WFLYUT0021: Registered web context: '/spin' for server 'default-server'
+00:08:32,450 INFO  [org.camunda.bpm.container.impl.jboss.service.ProcessApplicationDeploymentService] (ServerService Thread Pool -- 31) Deployment summary for process archive 'spin' of process application 'spin':
+
+        process.bpmn
+
+00:08:32,576 INFO  [org.camunda.bpm.application] (ServerService Thread Pool -- 31) ENGINE-07021 ProcessApplication 'spin' registered for DB deployments [abb3a59c-bc64-11ea-8392-5cc5d40072eb]. Will execute process definitions
+
+        spin[version: 1, id: spin:1:abcb4c4e-bc64-11ea-8392-5cc5d40072eb]
+Deployment does not provide any case definitions.
+00:08:32,584 INFO  [org.camunda.spin] (MSC service thread 1-6) SPIN-01010 Discovered Spin data format provider: org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormatProvider[name = application/json]
+00:08:32,600 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-6) MSC000001: Failed to start service org.camunda.bpm.platform.process-application-module."deployment.spin.war".START: org.jboss.msc.service.StartException in service org.camunda.bpm.platform.process-application-module."deployment.spin.war".START: Failed to start service
+        at org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1731)
+        at org.jboss.msc.service.ServiceControllerImpl$ControllerTask.run(ServiceControllerImpl.java:1559)
+        at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+        at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:1982)
+        at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1486)
+        at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1377)
+        at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.ExceptionInInitializerError
+        at org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormat.<clinit>(JacksonJsonDataFormat.java:58)
+        at org.camunda.spin.impl.json.jackson.format.JacksonJsonDataFormatProvider.createInstance(JacksonJsonDataFormatProvider.java:41)
+        at org.camunda.spin.DataFormats.registerProvider(DataFormats.java:164)
+        at org.camunda.spin.DataFormats.registerCustomDataFormats(DataFormats.java:152)
+        at org.camunda.spin.DataFormats.registerDataFormats(DataFormats.java:136)
+        at org.camunda.spin.DataFormats.registerDataFormats(DataFormats.java:123)
+        at org.camunda.spin.plugin.impl.SpinBpmPlatformPlugin.lookupSpinSerializers(SpinBpmPlatformPlugin.java:64)
+        at org.camunda.spin.plugin.impl.SpinBpmPlatformPlugin.initializeVariableSerializers(SpinBpmPlatformPlugin.java:56)
+        at org.camunda.spin.plugin.impl.SpinBpmPlatformPlugin.postProcessApplicationDeploy(SpinBpmPlatformPlugin.java:41)
+        at org.camunda.bpm.container.impl.jboss.service.ProcessApplicationStartService.notifyBpmPlatformPlugins(ProcessApplicationStartService.java:177)
+        at org.camunda.bpm.container.impl.jboss.service.ProcessApplicationStartService.start(ProcessApplicationStartService.java:150)
+        at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1739)
+        at org.jboss.msc.service.ServiceControllerImpl$StartTask.execute(ServiceControllerImpl.java:1701)
+        ... 6 more
+Caused by: java.lang.ClassCastException: org.camunda.spin.impl.json.jackson.JacksonJsonLogger cannot be cast to org.camunda.commons.logging.BaseLogger
+        at org.camunda.commons.logging.BaseLogger.createLogger(BaseLogger.java:92)
+        at org.camunda.spin.impl.json.jackson.JacksonJsonLogger.<clinit>(JacksonJsonLogger.java:39)
+        ... 19 more
+
+00:08:32,602 ERROR [org.jboss.as.controller.management-operation] (DeploymentScanner-threads - 1) WFLYCTL0013: Operation ("deploy") failed - address: ([("deployment" => "spin.war")]) - failure description: {"WFLYCTL0080: Failed services" => {"org.camunda.bpm.platform.process-application-module.\"deployment.spin.war\".START" => "Failed to start service
+    Caused by: java.lang.ExceptionInInitializerError
+    Caused by: java.lang.ClassCastException: org.camunda.spin.impl.json.jackson.JacksonJsonLogger cannot be cast to org.camunda.commons.logging.BaseLogger"}}
+00:08:32,729 INFO  [org.jboss.as.server] (DeploymentScanner-threads - 1) WFLYSRV0010: Deployed "spin.war" (runtime-name : "spin.war")
+00:08:32,730 INFO  [org.jboss.as.controller] (DeploymentScanner-threads - 1) WFLYCTL0183: Service status report
+WFLYCTL0186:   Services which failed to start:      service org.camunda.bpm.platform.process-application-module."deployment.spin.war".START: Failed to start service
+      service org.camunda.bpm.platform.process-application-module."deployment.polovtsy_vs_pechenegs.war".START: Failed to start service
+
+00:17:43,067 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 1) WFLYDR0009: Content C:\Camunda\camunda-7.13.0-wildfly-19.0.0-H2\server\wildfly-19.0.0.Final\standalone\data\content\97\ef1b3cc21a045f99f50bf5774660f6467005d7 is obsolete and will be removed
+00:17:43,075 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 1) WFLYDR0002: Content removed from location C:\Camunda\camunda-7.13.0-wildfly-19.0.0-H2\server\wildfly-19.0.0.Final\standalone\data\content\97\ef1b3cc21a045f99f50bf5774660f6467005d7\content
+00:17:43,075 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 1) WFLYDR0009: Content C:\Camunda\camunda-7.13.0-wildfly-19.0.0-H2\server\wildfly-19.0.0.Final\standalone\data\content\cc\a5218183258d39e591c17dc3605c00f1c94060 is obsolete and will be removed
+00:17:43,087 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 1) WFLYDR0002: Content removed from location C:\Camunda\camunda-7.13.0-wildfly-19.0.0-H2\server\wildfly-19.0.0.Final\standalone\data\content\cc\a5218183258d39e591c17dc3605c00f1c94060\content
